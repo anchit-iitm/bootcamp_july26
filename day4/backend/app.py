@@ -20,11 +20,14 @@ def create_flask_server():
     from routes.test import test_bp
     init_app.register_blueprint(test_bp)
 
+    from routes.auth import auth_bp
+    init_app.register_blueprint(auth_bp)
+
     from flask_restful import Api
     init_api = Api(init_app, prefix="/api")
 
     from routes.cars_flask_restful import CarsResource
-    init_api.add_resource(CarsResource, "/cars")  # serveraddress/api/cars
+    init_api.add_resource(CarsResource, "/cars")
 
     from security import security
     security.init_app(init_app, user_datastore)

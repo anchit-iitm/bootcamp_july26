@@ -2,7 +2,6 @@ from flask import Blueprint
 
 test_bp = Blueprint('test', __name__)
 
-# @app.route("/")
 @test_bp.route("/")
 def hello():
     return "Hello, World!"
